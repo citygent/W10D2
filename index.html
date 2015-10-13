@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="doughnutApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Rubber Dinghy Rapids</title>
+<!--     <link rel="stylesheet" href="css/style.css"> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/doughnutConsumer.js" charset="utf-8"></script>
+</head>
+<body ng-controller="DoughnutController as donuts">
+  <h1>{{ donuts.title }}</h1>
+
+  <ul>
+    <li ng-repeat="donut in donuts.all"><strong>{{ donut.style }}</strong> <em>{{donut.flavor}}</em></li>
+  </ul>
+  
+  <form ng-submit="donuts.addDoughnut()">
+    <label for="donuts-style">Doughnut Style</label>
+    <input type="text" id="donuts-style" placeholder="Old Fashioned" ng-model='donuts.newDoughnut.style'>
+
+    <label for="donuts-flavor">Doughnut Flavour</label>
+    <input type="text" id="donuts-flavor" placeholder="Snozberry" ng-model='donuts.newDoughnut.flavor'>
+    
+    <input type="submit" value="Add Doughnut">
+
+  </form>
+
+
+</body>
+</html>
