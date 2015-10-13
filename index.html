@@ -12,10 +12,11 @@
   <h1>{{ donuts.title }}</h1>
 
   <ul>
-    <li ng-repeat="donut in donuts.all">
-      <strong>{{ donut.style }}</strong> 
-      <em>{{donut.flavor}}</em>
-      <button class="delete" ng-click="donuts.deleteDoughnut(donut)">X</button>
+    <li ng-repeat="donut in donuts.all" ng-submit="donuts.editDoughnut()">
+      <strong contentEditable="true" ng-model="donuts.editDonut.style">{{ donut.style }}</strong> 
+      <em contentEditable="true" ng-model="donuts.editDonut.flavor">{{donut.flavor}}</em>
+      <button class="edit" type="submit">edit</button>
+      <button class="delete" ng-click="donuts.deleteDoughnut()">X</button>
     </li>
   </ul>
   

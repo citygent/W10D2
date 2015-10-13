@@ -19,7 +19,9 @@ function DoughnutController($http){
 
   self.addDoughnut = addDoughnut;
   self.deleteDoughnut = deleteDoughnut;
+  self.editDoughnut = editDoughnut;
   self.newDoughnut = {};
+  self.editDonut = {}
 
 
   function newId(){
@@ -55,6 +57,12 @@ function DoughnutController($http){
         console.log(response)
         self.all = self.all.filter(function (donut) { return donut.id !== donutId.id})
       })
+  }
+
+  function editDoughnut(donut) {
+    console.log('i am edit')
+    console.log(donut)
+    console.log(self.editDonut)
   }
 
 }
