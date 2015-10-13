@@ -21,7 +21,22 @@ function DoughnutController($http){
   self.deleteDoughnut = deleteDoughnut;
   self.newDoughnut = {};
 
+
+  function newId(){
+    current_ids = [];
+    (self.all).forEach(function(key) {
+      current_ids.push(key.id);
+    })
+    largest_id = current_ids.reduce(function(x,y){
+       return (x > y) ? x : y;
+    });
+    unique_id = parseInt(largest_id) + 1;
+    return unique_id
+  }
+
   function addDoughnut() {
+    self.newDoughnut.id = newId();
+    console.log(self.newDoughnut)
     $http
       .post('http://api.doughnuts.ga/doughnuts', self.newDoughnut)
       .then(function(response) {
