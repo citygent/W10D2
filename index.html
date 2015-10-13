@@ -12,7 +12,11 @@
   <h1>{{ donuts.title }}</h1>
 
   <ul>
-    <li ng-repeat="donut in donuts.all"><strong>{{ donut.style }}</strong> <em>{{donut.flavor}}</em></li>
+    <li ng-repeat="donut in donuts.all">
+      <strong>{{ donut.style }}</strong> 
+      <em>{{donut.flavor}}</em>
+      <button class="delete" ng-click="donuts.deleteDoughnut(donut)">X</button>
+    </li>
   </ul>
   
   <form ng-submit="donuts.addDoughnut()">

@@ -18,6 +18,7 @@ function DoughnutController($http){
   getDoughnuts()
 
   self.addDoughnut = addDoughnut;
+  self.deleteDoughnut = deleteDoughnut;
   self.newDoughnut = {};
 
   function addDoughnut() {
@@ -30,6 +31,15 @@ function DoughnutController($http){
     self.newDoughnut = {};
   }
 
-
+  function deleteDoughnut(donutId){
+    console.log(donutId)
+    $http
+      .delete('http://api.doughnuts.ga/doughnuts/'+ donutId)
+      .then(function(response) {
+        console.log('response from API:')
+        console.log(response)
+        self.all = self.all.filter(function (donut) { return donut.id !== donutId.id})
+      })
+  }
 
 }
