@@ -24,9 +24,10 @@ function DoughnutController($http){
   self.editDonut = {}
 
 
-  function newId(){
+  function newId(donut){
     current_ids = [];
     (self.all).forEach(function(key) {
+      console.log(key)
       current_ids.push(key.id);
     })
     largest_id = current_ids.reduce(function(x,y){
@@ -37,7 +38,7 @@ function DoughnutController($http){
   }
 
   function addDoughnut() {
-    self.newDoughnut.id = newId();
+    self.newDoughnut.id = newId(self.newDoughnut);
     console.log(self.newDoughnut)
     $http
       .post('http://api.doughnuts.ga/doughnuts', self.newDoughnut)
